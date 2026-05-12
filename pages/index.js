@@ -276,7 +276,7 @@ export default function Home() {
                             {[
                                 {
                                     degree: "B.Tech in Information Technology",
-                                    school: "Maharaja Surajmal Institute of Technology, Delhi",
+                                    school: "Guru Gobind Singh Indraprastha University",
                                     period: "2022 – 2026",
                                     stats: "GPA 7.0/10"
                                 },
