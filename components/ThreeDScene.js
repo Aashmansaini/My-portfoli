@@ -164,8 +164,8 @@ export default function ThreeDScene() {
         const projected = new THREE.Vector3();
 
         // Interaction constants — tuned for "barely there" feel
-        const INFLUENCE_RADIUS = 0.28; // NDC units (~14% of half-screen)
-        const MAX_PUSH = 0.32;         // world-space units, very gentle
+        const INFLUENCE_RADIUS = 0.31; // Increased for more reactivity
+        const MAX_PUSH = 0.38;         // Increased for stronger repulsion feel
         const DECAY = 0.95;            // how fast nodes spring back (higher = lazier)
 
         function onMouseMove(event) {

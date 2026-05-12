@@ -153,13 +153,13 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* ─── Experience & Projects ─── */}
+                {/* ─── Experience ─── */}
                 <section className="section" id="experience">
                     <ScrollReveal>
                         <div className="section-header">
                             <div>
-                                <div className="section-label">Experience &amp; Projects</div>
-                                <h2>What I've built.</h2>
+                                <div className="section-label">Experience</div>
+                                <h2>Professional Journey.</h2>
                             </div>
                         </div>
                     </ScrollReveal>
@@ -179,21 +179,50 @@ export default function Home() {
                                 tags: ['Python', 'TensorFlow', 'NLP', 'Model Deployment'],
                             },
                             {
-                                date: '2025',
-                                title: 'Stock Prediction System',
-                                description: 'Built a full-stack market forecasting platform trained on 5 years of historical data. Achieved 0.0006 epoch loss using an ensemble of LSTM, GRU, Transformer, and Random Forest models with a conversational AI interface.',
-                                tags: ['Python', 'TensorFlow', 'LSTM', 'Transformer', 'Flask', 'Pandas'],
-                            },
-                            {
                                 date: 'Jun – Sep 2024',
                                 title: 'Data Analyst Intern · DNISPL',
                                 description: 'Automated repetitive data entry workflows across B2B client pipelines, reducing processing time by 40%. Managed and queried 10,000+ line enterprise databases and built operational reporting dashboards.',
                                 tags: ['Python', 'SQL', 'Pandas', 'PostgreSQL', 'Dashboards'],
                             },
+                        ]}
+                    />
+                </section>
+
+                {/* ─── Projects ─── */}
+                <section className="section" id="projects">
+                    <ScrollReveal>
+                        <div className="section-header">
+                            <div>
+                                <div className="section-label">Projects</div>
+                                <h2>What I've built.</h2>
+                            </div>
+                        </div>
+                    </ScrollReveal>
+
+                    <AdvancedTimeline
+                        items={[
+                            {
+                                date: '2026',
+                                title: 'Video-to-Report RAG Pipeline',
+                                description: 'Built an automated pipeline for Kapable that converts recorded coaching sessions into structured evaluation reports. Utilizes NLP and local LLMs to extract personality traits and performance evidence from video transcripts.',
+                                tags: ['Python', 'RAG', 'NLP', 'LLMs', 'Ollama'],
+                            },
+                            {
+                                date: '2025',
+                                title: 'Stock Prediction System',
+                                description: 'Architected a market forecasting platform trained on 5 years of historical data, achieving a 0.0006 epoch loss using an ensemble of LSTM, RNN, GRU, and Transformer models. Integrated a conversational AI assistant for real-time statistical analysis and performance reporting.',
+                                tags: ['Python', 'TensorFlow', 'LSTM', 'Flask', 'Transformer'],
+                            },
                             {
                                 date: '2024',
-                                title: 'Traffic Flow Prediction System',
-                                description: 'Developed a real-time traffic monitoring pipeline using an ensemble of regression, clustering, and deep learning models. Achieved 85%+ prediction accuracy across Linear Regression, Decision Tree, K-Means, and LSTM.',
+                                title: 'Hospital Management System',
+                                description: 'Engineered a Power BI analytics suite for real-time patient tracking and predictive readmission risk modeling. Developed an IoT-driven alert system and a conversational agent to automate patient query resolution.',
+                                tags: ['Power BI', 'SQL', 'Python', 'IoT', 'Predictive Modeling'],
+                            },
+                            {
+                                date: '2024',
+                                title: 'Traffic Prediction System',
+                                description: 'Designed high-accuracy (85%+) analytical pipelines for real-time traffic monitoring. Implemented feature engineering and model optimization across multiple LSTM architectures to forecast traffic flow patterns.',
                                 tags: ['Python', 'Scikit-learn', 'LSTM', 'Feature Engineering'],
                             },
                         ]}

@@ -3,6 +3,7 @@ import GlowCard from './GlowCard';
 
 const navItems = [
     ['Experience', '#experience'],
+    ['Projects', '#projects'],
     ['Skills', '#skills'],
     ['Credentials', '#credentials'],
     ['Contact', '#contact'],
