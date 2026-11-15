@@ -48,7 +48,7 @@ export default function MagneticButton({ children, href, className = "", primary
                 style={{
                     position: "absolute",
                     inset: 0,
-                    background: primary ? "#e8a0bf" : "rgba(255, 255, 255, 0.1)",
+                    background: primary ? "#ffffff" : "rgba(255, 255, 255, 0.1)",
                     zIndex: -1,
                     scale: 0,
                     borderRadius: "50%",

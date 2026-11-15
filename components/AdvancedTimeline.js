@@ -33,8 +33,8 @@ export default function AdvancedTimeline({ items }) {
                 width: "2px",
                 height: lineHeight,
                 opacity: lineOpacity,
-                background: "linear-gradient(180deg, transparent, #e8a0bf 50%, #fff 100%)",
-                boxShadow: "0 0 15px #e8a0bf",
+                background: "linear-gradient(180deg, transparent, #ffffff 50%, #fff 100%)",
+                boxShadow: "0 0 15px #ffffff",
                 zIndex: 1,
             }} />
 
@@ -79,11 +79,11 @@ function TimelineItem({ item }) {
                         height: "14px",
                         borderRadius: "50%",
                         background: "#070707",
-                        border: "2px solid #e8a0bf",
-                        boxShadow: "0 0 20px rgba(232, 160, 191, 0.4)",
+                        border: "2px solid #ffffff",
+                        boxShadow: "0 0 20px rgba(255, 255, 255, 0.4)",
                         zIndex: 3,
                     }}
-                    whileInView={{ scale: [1, 1.3, 1], background: ["#070707", "#e8a0bf", "#070707"] }}
+                    whileInView={{ scale: [1, 1.3, 1], background: ["#070707", "#ffffff", "#070707"] }}
                     transition={{ duration: 1, ease: "easeInOut" }}
                     viewport={{ once: true, margin: "-100px" }}
                 />

@@ -37,7 +37,7 @@ export default function GlowCard({ children, className = "", contentClassName = 
                 style={{
                     position: "absolute",
                     inset: 0,
-                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(232, 160, 191, 0.08), transparent 40%)`,
+                    background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.08), transparent 40%)`,
                     pointerEvents: "none",
                     zIndex: 0,
                 }}
@@ -50,7 +50,7 @@ export default function GlowCard({ children, className = "", contentClassName = 
                     inset: 0,
                     borderRadius: "inherit",
                     padding: "1px",
-                    background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(232, 160, 191, 0.4), transparent 40%)`,
+                    background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.4), transparent 40%)`,
                     WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                     WebkitMaskComposite: "xor",
                     maskComposite: "exclude",

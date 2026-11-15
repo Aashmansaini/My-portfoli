@@ -4,19 +4,19 @@ import GlowCard from "./GlowCard";
 const skillCategories = [
     {
         label: "Languages",
-        items: ["Python", "SQL", "Java", "C++"],
+        items: ["Python", "SQL", "Java", "C++", "C", "R", "HTML", "CSS"],
     },
     {
-        label: "ML & Deep Learning",
-        items: ["TensorFlow", "Scikit-learn", "LSTM", "GRU", "Transformers", "RAG Pipelines"],
+        label: "ML & AI",
+        items: ["RAG Pipelines", "LangChain", "LangGraph", "ChromaDB", "Ollama", "TensorFlow", "Keras", "Scikit-learn", "LSTM", "Transformers", "Keycloak"],
     },
     {
-        label: "Data & Analytics",
-        items: ["Pandas", "NumPy", "Power BI", "Jupyter", "Feature Engineering"],
+        label: "Data Science & Analytics",
+        items: ["Pandas", "NumPy", "Power BI", "Tableau", "Matplotlib", "Seaborn", "Predictive Modeling", "Feature Engineering"],
     },
     {
-        label: "Cloud & Tools",
-        items: ["AWS", "Flask", "Git", "GitHub", "PostgreSQL"],
+        label: "Cloud & Databases",
+        items: ["AWS (SageMaker, Lambda, S3)", "ClickHouse", "Snowflake", "PostgreSQL", "MySQL", "Flask APIs"],
     },
 ];
 

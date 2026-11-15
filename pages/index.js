@@ -3,7 +3,6 @@ import {
     motion,
     useScroll,
     useTransform,
-    useSpring,
 } from 'framer-motion';
 
 import Navbar from '../components/Navbar';
@@ -19,40 +18,28 @@ export default function Home() {
 
     const { scrollYProgress } = useScroll();
 
-    const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 55,
-        damping: 26,
-        mass: 0.4,
-    });
-
     const networkScale = useTransform(
-        smoothProgress,
+        scrollYProgress,
         [0, 0.35, 1],
         [0.92, 1.04, 1.18]
     );
     const networkOpacity = useTransform(
-        smoothProgress,
+        scrollYProgress,
         [0, 0.2, 0.8, 1],
         [0.72, 0.92, 0.68, 0.48]
     );
-    const networkX = useTransform(smoothProgress, [0, 0.35, 1], ['0%', '0%', '-4%']);
-    const networkY = useTransform(smoothProgress, [0, 1], ['0%', '3%']);
-    const bgDarkenOpacity = useTransform(smoothProgress, [0, 1], [0, 0.85]);
+    const networkX = useTransform(scrollYProgress, [0, 0.35, 1], ['0%', '0%', '-4%']);
+    const networkY = useTransform(scrollYProgress, [0, 1], ['0%', '3%']);
+    const bgDarkenOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.85]);
 
     const { scrollYProgress: heroProgress } = useScroll({
         target: heroRef,
         offset: ['start start', 'end start'],
     });
 
-    const smoothHeroProgress = useSpring(heroProgress, {
-        stiffness: 70,
-        damping: 24,
-        mass: 0.35,
-    });
-
-    const titleY = useTransform(smoothHeroProgress, [0, 1], [0, -55]);
-    const titleScale = useTransform(smoothHeroProgress, [0, 1], [1, 0.94]);
-    const titleOpacity = useTransform(smoothHeroProgress, [0, 0.78, 1], [1, 1, 0.35]);
+    const titleY = useTransform(heroProgress, [0, 1], [0, -55]);
+    const titleScale = useTransform(heroProgress, [0, 1], [1, 0.94]);
+    const titleOpacity = useTransform(heroProgress, [0, 0.78, 1], [1, 1, 0.35]);
 
     return (
         <>
@@ -111,10 +98,24 @@ export default function Home() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                Aashman Saini.
-                                <span className="hero-gradient" style={{ display: 'block' }}>
+                                <motion.span 
+                                    className="chrome-text" 
+                                    style={{ display: 'block' }}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                                >
+                                    Aashman Saini.
+                                </motion.span>
+                                <motion.span 
+                                    className="chrome-text" 
+                                    style={{ display: 'block' }}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                                >
                                     AI &amp; ML Engineer.
-                                </span>
+                                </motion.span>
                             </motion.h1>
 
                             <motion.p
@@ -167,22 +168,28 @@ export default function Home() {
                     <AdvancedTimeline
                         items={[
                             {
-                                date: 'Jan 2026 – Present',
+                                date: 'May 2026 – Present',
+                                title: 'Data Analyst Intern - SCM · Knorr-Bremse',
+                                description: 'Developing custom SAP automation tools and scripts to streamline supply chain workflows. Engineering scalable data extraction pipelines into ClickHouse and Snowflake for sub-second OLAP queries across large-scale logistics data, and building interactive Power BI dashboards.',
+                                tags: ['SAP Automation', 'ClickHouse', 'Snowflake', 'Power BI', 'SCM Analytics'],
+                            },
+                            {
+                                date: 'March – May 2026',
                                 title: 'AI/ML Engineer Intern · Kapable',
-                                description: 'Building RAG pipelines to convert recorded coaching sessions into structured evaluation reports. Working on NLP-based personality prediction using text analysis and integrating local LLMs for production use.',
-                                tags: ['Python', 'RAG Pipelines', 'NLP', 'LLMs', 'Ollama'],
+                                description: 'Engineered a RAG pipeline to convert coaching sessions into structured evaluation reports using LangChain, ChromaDB, and Ollama. Integrated Whisper transcription and Nomic-embed chunking (92% accuracy), architecting serverless AWS Lambda and Flask API ingestion pipelines.',
+                                tags: ['RAG', 'LangChain', 'ChromaDB', 'Whisper', 'AWS Lambda', 'Flask'],
                             },
                             {
                                 date: 'Aug – Dec 2025',
-                                title: 'AI/ML Engineer Intern · MBD Group',
-                                description: 'Designed and deployed an NLP chatbot for the Aasoka education platform to handle real-time student queries at scale. Currently serving 500,000+ users in production.',
-                                tags: ['Python', 'TensorFlow', 'NLP', 'Model Deployment'],
+                                title: 'AI/ML Engineer Intern · MBD Alchemie (MBD Group)',
+                                description: 'Developed production-ready ML models and integrated an AI-powered NLP chatbot for the AASOKA platform. Applied deep learning techniques and deployed serverless microservices via AWS Lambda handling real-time NLP inference for 500,000+ active users.',
+                                tags: ['Python', 'TensorFlow', 'NLP', 'AWS Lambda', 'Model Deployment'],
                             },
                             {
                                 date: 'Jun – Sep 2024',
                                 title: 'Data Analyst Intern · DNISPL',
-                                description: 'Automated repetitive data entry workflows across B2B client pipelines, reducing processing time by 40%. Managed and queried 10,000+ line enterprise databases and built operational reporting dashboards.',
-                                tags: ['Python', 'SQL', 'Pandas', 'PostgreSQL', 'Dashboards'],
+                                description: 'Built Python-based automated workflow tools streamlining daily data entry processes, reducing processing time by 40%. Managed 10,000+ line enterprise databases for high-value B2B clients and performed statistical analysis and BI reporting.',
+                                tags: ['Python', 'SQL', 'Pandas', 'PostgreSQL', 'Matplotlib', 'Dashboards'],
                             },
                         ]}
                     />
@@ -202,27 +209,21 @@ export default function Home() {
                     <AdvancedTimeline
                         items={[
                             {
-                                date: '2026',
-                                title: 'Video-to-Report RAG Pipeline',
-                                description: 'Built an automated pipeline for Kapable that converts recorded coaching sessions into structured evaluation reports. Utilizes NLP and local LLMs to extract personality traits and performance evidence from video transcripts.',
-                                tags: ['Python', 'RAG', 'NLP', 'LLMs', 'Ollama'],
-                            },
-                            {
                                 date: '2025',
                                 title: 'Stock Prediction System',
-                                description: 'Architected a market forecasting platform trained on 5 years of historical data, achieving a 0.0006 epoch loss using an ensemble of LSTM, RNN, GRU, and Transformer models. Integrated a conversational AI assistant for real-time statistical analysis and performance reporting.',
-                                tags: ['Python', 'TensorFlow', 'LSTM', 'Flask', 'Transformer'],
+                                description: 'Architected a market forecasting platform trained on 5 years of historical data, achieving a 0.0006 minimum training loss across 4+ models (LSTM, Transformer). Built full-stack web application integrated with Keycloak for SSO and JWT-based authentication securing real-time inference endpoints.',
+                                tags: ['Python', 'TensorFlow', 'LSTM', 'Transformer', 'Keycloak', 'Flask'],
                             },
                             {
                                 date: '2024',
                                 title: 'Hospital Management System',
-                                description: 'Engineered a Power BI analytics suite for real-time patient tracking and predictive readmission risk modeling. Developed an IoT-driven alert system and a conversational agent to automate patient query resolution.',
-                                tags: ['Power BI', 'SQL', 'Python', 'IoT', 'Predictive Modeling'],
+                                description: 'Created Power BI dashboard with visual analytics for real-time patient tracking and predictive readmission risk modeling. Integrated IoT data and automated alerts; deployed conversational AI system for patient query resolution.',
+                                tags: ['Power BI', 'Python', 'SQL', 'IoT', 'Conversational AI'],
                             },
                             {
                                 date: '2024',
                                 title: 'Traffic Prediction System',
-                                description: 'Designed high-accuracy (85%+) analytical pipelines for real-time traffic monitoring. Implemented feature engineering and model optimization across multiple LSTM architectures to forecast traffic flow patterns.',
+                                description: 'Developed analytical pipelines for real-time traffic monitoring achieving 85%+ prediction accuracy. Built real-time traffic flow prediction using feature engineering and model optimization across multiple LSTM architectures.',
                                 tags: ['Python', 'Scikit-learn', 'LSTM', 'Feature Engineering'],
                             },
                         ]}
