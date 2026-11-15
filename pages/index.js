@@ -3,6 +3,7 @@ import {
     motion,
     useScroll,
     useTransform,
+    useSpring,
 } from 'framer-motion';
 
 import Navbar from '../components/Navbar';
@@ -18,28 +19,40 @@ export default function Home() {
 
     const { scrollYProgress } = useScroll();
 
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 55,
+        damping: 26,
+        mass: 0.4,
+    });
+
     const networkScale = useTransform(
-        scrollYProgress,
+        smoothProgress,
         [0, 0.35, 1],
         [0.92, 1.04, 1.18]
     );
     const networkOpacity = useTransform(
-        scrollYProgress,
+        smoothProgress,
         [0, 0.2, 0.8, 1],
         [0.72, 0.92, 0.68, 0.48]
     );
-    const networkX = useTransform(scrollYProgress, [0, 0.35, 1], ['0%', '0%', '-4%']);
-    const networkY = useTransform(scrollYProgress, [0, 1], ['0%', '3%']);
-    const bgDarkenOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.85]);
+    const networkX = useTransform(smoothProgress, [0, 0.35, 1], ['0%', '0%', '-4%']);
+    const networkY = useTransform(smoothProgress, [0, 1], ['0%', '3%']);
+    const bgDarkenOpacity = useTransform(smoothProgress, [0, 1], [0, 0.85]);
 
     const { scrollYProgress: heroProgress } = useScroll({
         target: heroRef,
         offset: ['start start', 'end start'],
     });
 
-    const titleY = useTransform(heroProgress, [0, 1], [0, -55]);
-    const titleScale = useTransform(heroProgress, [0, 1], [1, 0.94]);
-    const titleOpacity = useTransform(heroProgress, [0, 0.78, 1], [1, 1, 0.35]);
+    const smoothHeroProgress = useSpring(heroProgress, {
+        stiffness: 70,
+        damping: 24,
+        mass: 0.35,
+    });
+
+    const titleY = useTransform(smoothHeroProgress, [0, 1], [0, -55]);
+    const titleScale = useTransform(smoothHeroProgress, [0, 1], [1, 0.94]);
+    const titleOpacity = useTransform(smoothHeroProgress, [0, 0.78, 1], [1, 1, 0.35]);
 
     return (
         <>
@@ -98,24 +111,10 @@ export default function Home() {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                <motion.span 
-                                    className="chrome-text" 
-                                    style={{ display: 'block' }}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                                >
-                                    Aashman Saini.
-                                </motion.span>
-                                <motion.span 
-                                    className="chrome-text" 
-                                    style={{ display: 'block' }}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                                >
+                                Aashman Saini.
+                                <span className="hero-gradient" style={{ display: 'block' }}>
                                     AI &amp; ML Engineer.
-                                </motion.span>
+                                </span>
                             </motion.h1>
 
                             <motion.p
